@@ -8,6 +8,7 @@ import { DrinkCardComponent } from './drink-card/drink-card.component';
 import { HomeComponent } from './home/home.component';
 import { DrinkDetailComponent } from './drink-detail/drink-detail.component';
 import { LucideAngularModule, Martini, Home } from 'lucide-angular';
+import { DrinkDetailSkeletonComponent } from './drink-detail-skeleton/drink-detail-skeleton.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { LucideAngularModule, Martini, Home } from 'lucide-angular';
     DrinkCardComponent,
     HomeComponent,
     DrinkDetailComponent,
+    DrinkDetailSkeletonComponent,
   ],
   imports: [
     BrowserModule,

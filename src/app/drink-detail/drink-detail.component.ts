@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DrinkDetailComponent implements OnInit {
   drinkDetail: Drink[] = [];
+  isLoading: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -17,12 +18,17 @@ export class DrinkDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
     if (id) {
+      this.isLoading = true;
       this.drinksService.getDrinkById(id).subscribe({
         next: (data) => {
           this.drinkDetail = data.drinks;
-          console.log(data);
+          this.isLoading = false;
+        },
+        error: (err) => {
+          console.error('Error fetching drinks:', err);
+          this.drinkDetail = [];
+          this.isLoading = false;
         },
       });
     }

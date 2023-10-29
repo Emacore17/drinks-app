@@ -9,6 +9,7 @@ import { Drink } from '../services/api/drinks/drinks.interface';
 export class HomeComponent implements OnInit {
   drinks: Drink[] = [];
   selectedLetter: string = 'a';
+  isLoading: boolean = false;
   alphabet: string[] = [
     'a',
     'b',
@@ -41,23 +42,21 @@ export class HomeComponent implements OnInit {
   constructor(private drinksService: DrinksService) {}
 
   ngOnInit(): void {
-    this.drinksService.getAllDrinksByInitialLetter('a').subscribe({
-      next: (data) => {
-        this.drinks = data.drinks;
-        console.log(data);
-      },
-    });
+    this.onLetterClick('a');
   }
 
   onLetterClick(letter: string): void {
+    this.isLoading = true;
     this.selectedLetter = letter;
     this.drinksService.getAllDrinksByInitialLetter(letter).subscribe({
       next: (data) => {
         this.drinks = data.drinks;
+        this.isLoading = false;
       },
       error: (err) => {
         console.error('Error fetching drinks:', err);
-        this.drinks = []; // Reset the drinks list in case of error
+        this.drinks = [];
+        this.isLoading = false;
       },
     });
   }
