@@ -1,0 +1,10 @@
+<div class="md:max-w-xl lg:max-w-5xl xl:max-w-7xl mx-auto py-16">
+  <div
+    class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full place-items-center"
+  >
+    <app-drink-card
+      *ngFor="let drink of drinks"
+      [drink]="drink"
+    ></app-drink-card>
+  </div>
+</div>
