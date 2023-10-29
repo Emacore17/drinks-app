@@ -15,8 +15,13 @@ export class DrinksService {
 
   constructor(private http: HttpClient) {}
 
-  getAllDrinksByInitialLetter(): Observable<DrinksResponse> {
-    const fetchUrl: string = `${this.apiUrl}search.php?f=a`;
+  getAllDrinksByInitialLetter(letter: string): Observable<DrinksResponse> {
+    const fetchUrl: string = `${this.apiUrl}search.php?f=${letter}`;
+    return this.http.get<DrinksResponse>(fetchUrl);
+  }
+
+  getDrinkById(id: string): Observable<DrinksResponse> {
+    const fetchUrl: string = `${this.apiUrl}lookup.php?i=${id}`;
     return this.http.get<DrinksResponse>(fetchUrl);
   }
 }

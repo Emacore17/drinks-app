@@ -1,10 +1,10 @@
 <div
-  class="flex w-64 flex-col items-center gap-2 p-4 rounded-lg bg-slate-800 shadow-md"
+  class="flex w-64 flex-col items-center gap-2 p-4 rounded-lg bg-slate-800 shadow-inner hover:scale-105 hover:bg-slate-700 duration-200 transition-all"
 >
-  <img
-    class="rounded"
-    [src]="drink?.strDrinkThumb"
-    alt=""
-  />
-  <a routerLink="/about" class="text-white font-semibold text-lg">{{drink?.strDrink}}</a>
+  <img class="rounded" [src]="drink?.strDrinkThumb" alt="" />
+  <a
+    [routerLink]="['/drink', drink?.idDrink]"
+    class="text-white font-semibold text-lg hover:underline"
+    >{{ drink?.strDrink }}</a
+  >
 </div>

@@ -1,4 +1,6 @@
-<div class="md:max-w-xl lg:max-w-5xl xl:max-w-7xl mx-auto py-16">
+<div
+  class="max-w-xs md:max-w-xl lg:max-w-5xl xl:max-w-7xl mx-auto py-16 text-white"
+>
   <div
     class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full place-items-center"
   >
@@ -7,4 +9,16 @@
       [drink]="drink"
     ></app-drink-card>
   </div>
+  <ul
+    class="flex space-x-4 uppercase mt-10 justify-center w-full font-semibold flex-wrap"
+  >
+    <li
+      *ngFor="let letter of alphabet"
+      class="text-xl cursor-pointer"
+      [ngClass]="{ 'text-yellow-500': letter === selectedLetter }"
+      (click)="onLetterClick(letter)"
+    >
+      {{ letter }}
+    </li>
+  </ul>
 </div>
